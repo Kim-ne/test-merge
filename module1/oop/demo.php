@@ -317,8 +317,8 @@ $ps3 = new phanso(3,4);
  *              + xem : xem thông tin nv
  * 
  */
-
- class nhanvien
+// trừu tượng: abstract class
+ abstract class nhanvien
 {
     // privite: chỉ sử dụng nội bộ lớp
     // protected: chỉ đc dùng khi có kế thừa
@@ -334,24 +334,17 @@ $ps3 = new phanso(3,4);
         $this->ngayvaolam = $ngayvaolam;
     }
 // xây dựng phương thức lơp
-    function trocap()
-    {
-      
-    }
+// các phương thức ở dưới đóng vai trò áp đặt cấu trúc cho con phải khai cụ thể ra
+    abstract function trocap();
 
-    function thuongphat()
-    {
-        return 0;
-    }
+    abstract function thuongphat();
 
-    function luong()
-    {
-        
-    }
+
+    abstract function luong();
 
     function thucnhan()
     {
-       
+       return ($this->luong()+$this->trocap()+$this->thuongphat());
     }
 
     function xem()
@@ -402,11 +395,6 @@ class nhanvienvp extends nhanvien //kế thừa
     {
         return  $this->hesoluong * $this->luongcoban ; // đa hình: cùng 1 phương thức nhưng nhiều cách xử lý khác cho từng đối tượng con
     }
-
-    function thucnhan()
-    {
-        return ($this->luong()+$this->trocap()+$this->thuongphat());
-    }
     function xemten()
     {
         echo $this->ten;
@@ -451,6 +439,7 @@ $nvM->xem();
  class nhanviensx extends nhanvien //kế thừa
 {
     // phạm vi sử dụng và thuộc tính thành viên
+    // var <=> public, privite, protected
     var $soluongsp,$tangca;
     var $dinhmucsp = 1000;
     var $dongia = 12000;
@@ -482,10 +471,7 @@ $nvM->xem();
         return  $this->soluongsp * $this->dongia ; // đa hình: cùng 1 phương thức nhưng nhiều cách xử lý khác cho từng đối tượng con
     }
 
-    function thucnhan()
-    {
-        return ($this->luong()+$this->trocap()+$this->thuongphat());
-    }
+    // public, privite, protected
     function xemten()
     {
         echo $this->ten;
