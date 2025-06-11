@@ -2,10 +2,10 @@
 class nhanviensanxuat extends nhanvien //kế thừa
 {
     // phạm vi sử dụng và thuộc tính thành viên
-    // var <=> public, privite, protected
-    var $soluongsp,$tangca;
-    var $dinhmucsp = 1000;
-    var $dongia = 12000;
+    // var <=> public, private, protected
+    private $soluongsp,$tangca;
+    private $dinhmucsp = 1000;
+    private $dongia = 12000;
 
     function __construct($ma,$ten,$gioitinh,$ngaysinh,$ngayvaolam,$soluongsp,$tangca,$null=null) // thêm 1 giá trị null cho đồng bộ các pt với nhau
     {
@@ -16,7 +16,7 @@ class nhanviensanxuat extends nhanvien //kế thừa
 // xây dựng phương thức lơp
     function trocap()
     {
-       if ($this->tangca == 'co' ) 
+       if ($this->tangca == '1' ) 
        {
             return  0.05 * $this->luong();
        }
@@ -39,11 +39,30 @@ class nhanviensanxuat extends nhanvien //kế thừa
     {
         echo $this->ten;
     }
+    // phương thức get/set cho thành viên (thuộc tính)
+    function get_dongia()
+    {
+        return $this->dongia/10;
+    }
 
+    function set_dongia($dongia)
+    {
+        // xử lý kiểm tra hợp lệ trước khi ghi vào thành viên
+        $this->dongia = $dongia;
+        return $this;
+    }
+    // static: biến phương của lớp thành dạng đc phép truy cập không cần new đối tượng ra, truy xuất nhanh
+    static function testkhongnew()
+    {
+        return 'ok';
+    }
+    // nếu là static phải là static hết 
+    // static function luongtinh()
+    // {
+    //     return self::luong();
+    // }
 }
 
-// $nvM = new nhanviensanxuat('2','M','nu','08/08/1994','05/10/2022', '1100', 'co');
-// $nvM->xem();
 ?>
 
 

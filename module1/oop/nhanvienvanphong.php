@@ -2,9 +2,9 @@
 class nhanvienvanphong extends nhanvien //kế thừa
 {
     // phạm vi sử dụng và thuộc tính thành viên
-    var $socon,$songayvang,$hesoluong;
-    var $luongcoban = 4000000 ;
-    var $dinhmucvang = 12;
+    private $socon,$songayvang,$hesoluong;
+    private $luongcoban = 4000000 ;
+    private $dinhmucvang = 12;
 
     function __construct($ma,$ten,$gioitinh,$ngaysinh,$ngayvaolam,$socon,$songayvang,$hesoluong)
     {
